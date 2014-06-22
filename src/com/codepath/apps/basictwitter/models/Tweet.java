@@ -1,10 +1,15 @@
 package com.codepath.apps.basictwitter.models;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.net.ParseException;
+import android.text.format.DateUtils;
 
 public class Tweet {
 	private String body;
@@ -34,8 +39,8 @@ public class Tweet {
 		return uid;
 	}
 
-	public String getCreatedAt() {
-		return createdAt;
+	public String getCreatedAt(){
+		return getRelativeTimeAgo(createdAt);
 	}
 
 	public User getUser() {
@@ -66,5 +71,22 @@ public class Tweet {
 	@Override
 	public String toString(){
 		return body;
+	}
+	
+	public String getRelativeTimeAgo(String rawJsonDate){
+		String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+		SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+		sf.setLenient(true);
+	 
+		String relativeDate = "";
+		try {
+			long dateMillis = sf.parse(rawJsonDate).getTime();
+			relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+					System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	 
+		return relativeDate;
 	}
 }
