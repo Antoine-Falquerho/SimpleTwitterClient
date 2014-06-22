@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/iNewStatus"
+          android:title="iNewStatus"
+          android:showAsAction="always"
+          android:onClick="onNewStatus"
+          android:icon="@drawable/ic_post_status"/>
+    
+
+</menu>
