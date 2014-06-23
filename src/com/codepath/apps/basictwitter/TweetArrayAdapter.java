@@ -35,6 +35,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 	       ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
 	       // Lookup view for data population
 	       TextView tvScreenName = (TextView) v.findViewById(R.id.tvScreenName);
+	       TextView tvName = (TextView) v.findViewById(R.id.tvName);
 	       TextView tvCreatedAt = (TextView) v.findViewById(R.id.tvCreatedAt);	       
 	       TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
 	       ivProfileImage.setImageResource(android.R.color.transparent);
@@ -44,6 +45,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 	       tvScreenName.setText(tweet.getUser().getScreenName());
 	       tvCreatedAt.setText(tweet.getCreatedAt());
 	       tvBody.setText(tweet.getBody());
+	       tvName.setText(tweet.getUser().getName());
 	       // Return the completed view to render on screen
 	       return v;
 	}

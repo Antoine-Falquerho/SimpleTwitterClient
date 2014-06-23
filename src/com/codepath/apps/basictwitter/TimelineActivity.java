@@ -26,6 +26,7 @@ public class TimelineActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayShowTitleEnabled(false); // hide app name in action bar
 		setContentView(R.layout.activity_timeline);
 		client = TwitterApplication.getRestClient();
 		populateTimeline(0);
@@ -45,7 +46,7 @@ public class TimelineActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
+	    MenuInflater inflater = getMenuInflater();	    
 	    inflater.inflate(R.menu.main, menu);	    
 	   return super.onCreateOptionsMenu(menu);
 	}

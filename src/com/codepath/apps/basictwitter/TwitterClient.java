@@ -3,7 +3,6 @@ package com.codepath.apps.basictwitter;
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.TwitterApi;
 
-import android.R.integer;
 import android.content.Context;
 import android.util.Log;
 
@@ -47,13 +46,18 @@ public class TwitterClient extends OAuthBaseClient {
     	client.get(apiUrl, params, handler);
     }
     
-    public void postStatus(String status){
+    public void postStatus(String status, AsyncHttpResponseHandler handler){
     	String apiUrl = getApiUrl("statuses/update.json");
     	RequestParams params = new RequestParams();
     	params.put("status", status);
-    	client.post(apiUrl, params, null);    	
+    	client.post(apiUrl, params, handler);    	
     }
     
+    public void getUserInfo(AsyncHttpResponseHandler handler){
+    	String apiUrl = getApiUrl("account/verify_credentials.json");
+    	Log.d("debug", "----getUserInfo----");
+    	client.get(apiUrl, null, handler);    	
+    }
     // CHANGE THIS
     // DEFINE METHODS for different API endpoints here
 //    public void getInterestingnessList(AsyncHttpResponseHandler handler) {

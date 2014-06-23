@@ -2,29 +2,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context="${packageName}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvName"
+        android:layout_below="@+id/tvName"
+        android:textColor="#8899a6"
+        android:text="" />
 
     <EditText
         android:id="@+id/etStatus"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/ivProfileImage"
+        android:layout_below="@+id/tvScreenName"
         android:ems="10"
-        android:minLines="5"
-        android:inputType="textMultiLine" >
+        android:gravity="top"
+        android:layout_marginTop="5dp"
+        android:inputType="textMultiLine"
+        android:minLines="5" >
 
         <requestFocus />
     </EditText>
-
-    <Button
-        android:id="@+id/btnPostStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/etStatus"
-        android:onClick="onPostStatus"
-        android:text="Button" />
 
 </RelativeLayout>

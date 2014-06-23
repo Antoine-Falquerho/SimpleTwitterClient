@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/iTweetLenght"
+          android:title="140"
+          android:showAsAction="always" />
+    
+	<item android:id="@+id/iNewStatus"
+          android:title="TWEET"
+          android:onClick="onPostStatus"
+          android:showAsAction="always" />
+</menu>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -9,29 +10,44 @@
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:contentDescription="User profile image"
         android:src="@drawable/ic_launcher" />
+    
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"   
+        android:layout_marginLeft="5dp"     
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvName"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_toRightOf="@+id/ivProfileImage"/>
+        android:layout_marginLeft="5dp"
+        android:textColor="#8899a6"
+        android:layout_toRightOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvScreenName"
+        android:layout_alignLeft="@+id/tvName"
+        android:autoLink="all"
         android:layout_below="@+id/tvScreenName"/>
 
     <TextView
         android:id="@+id/tvCreatedAt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvBody"
-        android:layout_below="@+id/tvBody"
-        android:text="TextView" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:textColor="#8899a6" />
 
 </RelativeLayout>
