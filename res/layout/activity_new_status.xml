@@ -36,10 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ivProfileImage"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/tvScreenName"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:gravity="top"
-        android:layout_marginTop="5dp"
+        android:hint="What&apos;s happening?"
         android:inputType="textMultiLine"
         android:minLines="5" >
 

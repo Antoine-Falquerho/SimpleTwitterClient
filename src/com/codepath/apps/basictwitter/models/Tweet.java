@@ -3,6 +3,7 @@ package com.codepath.apps.basictwitter.models;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.json.JSONArray;
@@ -89,6 +90,21 @@ public class Tweet implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		HashMap<String, String> replaceMappings = new HashMap<String, String>();
+        replaceMappings.put(" hours ago", "h");
+        replaceMappings.put(" hour ago", "h");
+        replaceMappings.put(" min ago", "m");
+        replaceMappings.put(" mins ago", "m");
+        replaceMappings.put(" seconds ago", "s");
+        replaceMappings.put(" second ago", "s");
+        replaceMappings.put(" day ago", "d");
+        replaceMappings.put(" days ago", "d");
+        for (String suffixKey: replaceMappings.keySet()) {
+            if (relativeDate.endsWith(suffixKey)) {
+                relativeDate = relativeDate.replace(suffixKey, replaceMappings.get(suffixKey));
+            }
+        }
 	 
 		return relativeDate;
 	}
