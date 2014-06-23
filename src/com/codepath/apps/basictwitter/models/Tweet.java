@@ -1,5 +1,6 @@
 package com.codepath.apps.basictwitter.models;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -8,10 +9,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.net.ParseException;
 import android.text.format.DateUtils;
 
-public class Tweet {
+public class Tweet implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2467256526926227151L;
 	private String body;
 	private long uid;
 	private String createdAt;
@@ -87,6 +91,22 @@ public class Tweet {
 		}
 	 
 		return relativeDate;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

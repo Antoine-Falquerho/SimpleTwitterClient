@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codepath.apps.basictwitter.models.Tweet;
 import com.codepath.apps.basictwitter.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -83,6 +85,12 @@ public class NewStatusActivity extends Activity {
 	
 	public void onPostStatus(MenuItem mi){
 		TwitterClient client = new TwitterClient(this);
+		Tweet newTweet = new Tweet();
+		newTweet.setUser(user);
+		newTweet.setBody(etStatus.getText().toString());
+		newTweet.setCreatedAt(System.currentTimeMillis() + "");
+		newTweet.setUid(1);
+		
 		client.postStatus(etStatus.getText().toString(), new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject json) {
@@ -96,7 +104,13 @@ public class NewStatusActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
 			}
 		});
-		finish();
+		
+		Intent data = new Intent();
+		// Pass relevant data back as a result
+		data.putExtra("tweet", newTweet);
+		// Activity finished ok, return the data
+		setResult(RESULT_OK, data); // set result code and bundle data for response
+		finish(); // closes the activity, pass data to parent
 	}
 	
 	public void getUserInfo(){		

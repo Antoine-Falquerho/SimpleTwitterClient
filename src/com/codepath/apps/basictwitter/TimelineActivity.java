@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -22,6 +23,7 @@ public class TimelineActivity extends Activity {
 	private ArrayList<Tweet> tweets;
 	private ArrayAdapter<Tweet> aTweets;
 	private ListView lvTweets;
+	private static int REQUEST_CODE = 10;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -69,10 +71,18 @@ public class TimelineActivity extends Activity {
 	public void onNewStatus(MenuItem mi) {
 		// TODO Auto-generated method stub	
 		Intent i = new Intent(this, NewStatusActivity.class);
-		startActivity(i);
+		startActivityForResult(i, REQUEST_CODE);
 	}
 	
 	private void loadMoreTweets(long maxId) {
 		populateTimeline(maxId);
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {		
+		Tweet tweet = (Tweet) data.getSerializableExtra("tweet");
+		tweets.add(0, tweet);
+		aTweets.notifyDataSetChanged();
+
+	} 
 }
