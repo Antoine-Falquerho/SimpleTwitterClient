@@ -2,7 +2,7 @@
 
 Build a simple Twitter client that supports viewing a Twitter timeline and composing a new tweet.
 
-Time spent: 12 hours spent in total
+Time spent: 14 hours spent in total
 
 Completed user stories:
 
