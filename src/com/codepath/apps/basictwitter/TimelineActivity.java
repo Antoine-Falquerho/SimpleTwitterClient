@@ -44,7 +44,7 @@ public class TimelineActivity extends Activity {
 		    public void onLoadMore(int page, int totalItemsCount) {
 		    	try{
 		    	Tweet last_tweet = tweets.get(tweets.size() - 1);
-		    	loadMoreTweets(last_tweet.getUid());
+		    	loadMoreTweets(last_tweet.getUid() - 1);
 		    	} catch(Exception e){
 		    		Log.d("debug", e.toString());
 		    	}
@@ -110,6 +110,7 @@ public class TimelineActivity extends Activity {
             public void onSuccess(JSONArray json) {
                 // ...the data has come back, finish populating listview...
                 // Now we call onRefreshComplete to signify refresh has finished
+            	populateTimeline(0);
                 lvTweets.onRefreshComplete();
             }
 
