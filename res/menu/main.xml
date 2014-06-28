@@ -7,5 +7,10 @@
           android:onClick="onNewStatus"
           android:icon="@drawable/ic_post_status"/>
     
+    <item android:id="@+id/iProfile"
+          android:title="iProfile"
+          android:showAsAction="always"
+          android:onClick="onProfileView"
+          android:icon="@drawable/ic_profile"/>
 
 </menu>
