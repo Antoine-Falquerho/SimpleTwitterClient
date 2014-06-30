@@ -42,12 +42,12 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 	       ImageLoader imageLoader = ImageLoader.getInstance();
 	       imageLoader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
 	       // Populate the data into the template view using the data object
-	       tvScreenName.setText(tweet.getUser().getScreenName());
+	       tvScreenName.setText("@" + tweet.getUser().getScreenName());
 	       tvCreatedAt.setText(tweet.getCreatedAt());
 	       tvBody.setText(tweet.getBody());
 	       tvName.setText(tweet.getUser().getName());
 	       // Return the completed view to render on screen
 	       return v;
-	}
+	}	
 
 }

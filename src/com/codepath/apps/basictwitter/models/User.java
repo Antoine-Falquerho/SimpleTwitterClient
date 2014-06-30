@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class User implements Serializable {
 	/**
 	 * 
@@ -25,7 +27,7 @@ public class User implements Serializable {
 			u.uid = jsonObject.getLong("id");
 			u.screenName = jsonObject.getString("screen_name");
 			u.followers= jsonObject.getString("followers_count");
-			u.following = jsonObject.getString("friends_count");
+			u.following = jsonObject.getString("friends_count");			
 			u.description= jsonObject.getString("description");
 			u.profileImageUrl = jsonObject.getString("profile_image_url");
 		} catch(JSONException e){
@@ -60,7 +62,7 @@ public class User implements Serializable {
 	}
 
 	public String getScreenName() {
-		return "@" + screenName;
+		return screenName;
 	}
 
 	public String getProfileImageUrl() {

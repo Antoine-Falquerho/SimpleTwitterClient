@@ -9,9 +9,11 @@ import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 public class TimelineActivity extends FragmentActivity {
 	
@@ -23,6 +25,7 @@ public class TimelineActivity extends FragmentActivity {
 		setContentView(R.layout.activity_timeline);
 		
 		setupTabs();
+		showProgressBar();
 	}
 	
 	@Override
@@ -58,7 +61,7 @@ public class TimelineActivity extends FragmentActivity {
 //
 //	} 
 	
-	private void setupTabs() {
+	private void setupTabs() {		
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(true);
@@ -79,9 +82,16 @@ public class TimelineActivity extends FragmentActivity {
 		    .setTag("MentionsTimelineFragment")
 		    .setTabListener(new FragmentTabListener<MentionsTimelineFragment>(R.id.flContainer, this,
                         "mentions", MentionsTimelineFragment.class));
-		actionBar.addTab(tab2);
+		actionBar.addTab(tab2);		
 	}
 	
-	
+	public void showProgressBar() {
+        setProgressBarIndeterminateVisibility(true); 
+    }
+    
+    // Should be called when an async task has finished
+    public void hideProgressBar() {
+    	setProgressBarIndeterminateVisibility(false); 
+    }
 	
 }

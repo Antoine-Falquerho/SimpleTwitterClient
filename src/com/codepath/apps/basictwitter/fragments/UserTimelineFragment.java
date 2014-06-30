@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.codepath.apps.basictwitter.ProfileActivity;
 import com.codepath.apps.basictwitter.TwitterApplication;
 import com.codepath.apps.basictwitter.TwitterClient;
 import com.codepath.apps.basictwitter.models.Tweet;
@@ -12,11 +13,13 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class UserTimelineFragment extends TweetsListFragment {
 	private TwitterClient client;
+	private String screenName;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		client = TwitterApplication.getRestClient();
+		screenName = ((ProfileActivity)getActivity()).getScreenName();
 		populateTimeline(0);
 	}
 	
@@ -32,6 +35,6 @@ public class UserTimelineFragment extends TweetsListFragment {
 				Log.d("debug", arg0.toString());
 				Log.d("debug", arg1.toString());
 			}
-		}, maxId);
+		}, maxId, screenName);
 	}
 }

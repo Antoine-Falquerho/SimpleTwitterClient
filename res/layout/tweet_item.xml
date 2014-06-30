@@ -40,6 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvName"
         android:autoLink="all"
+        android:linksClickable="true"
+        android:focusable="false"
         android:layout_below="@+id/tvScreenName"/>
 
     <TextView
