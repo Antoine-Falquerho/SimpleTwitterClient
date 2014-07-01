@@ -19,6 +19,7 @@ import android.widget.ListView;
 import com.codepath.apps.basictwitter.EndlessScrollListener;
 import com.codepath.apps.basictwitter.ProfileActivity;
 import com.codepath.apps.basictwitter.R;
+import com.codepath.apps.basictwitter.TimelineActivity;
 import com.codepath.apps.basictwitter.TweetArrayAdapter;
 import com.codepath.apps.basictwitter.TwitterClient;
 import com.codepath.apps.basictwitter.models.Tweet;
@@ -95,5 +96,9 @@ public class TweetsListFragment extends Fragment {
 	private void loadMoreTweets(long maxId) {
 		populateTimeline(maxId);
 	}
-		
+	
+	public void addTweet() {
+		Log.d("debug", "update tweets list");
+	}
+	
 }

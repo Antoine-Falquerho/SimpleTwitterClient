@@ -2,13 +2,17 @@ package com.codepath.apps.basictwitter;
 
 import com.codepath.apps.basictwitter.fragments.HomeTimelineFragment;
 import com.codepath.apps.basictwitter.fragments.MentionsTimelineFragment;
+import com.codepath.apps.basictwitter.fragments.TweetsListFragment;
 import com.codepath.apps.basictwitter.listeners.FragmentTabListener;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Helpers;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +22,8 @@ import android.view.View;
 public class TimelineActivity extends FragmentActivity {
 	
 	private static int REQUEST_CODE = 10;
+	private FragmentTransaction fragment;    
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -51,15 +57,17 @@ public class TimelineActivity extends FragmentActivity {
 //		populateTimeline(maxId);
 //	}
 	
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
 //			Tweet tweet = (Tweet) data.getSerializableExtra("tweet");
 //			fragmentTweetsList.add(0, tweet);
 //			aTweets.notifyDataSetChanged();
-//		}
-//
-//	} 
+			Log.d("debug", "backup");
+//			fragment.addTweet();
+		}
+
+	} 
 	
 	private void setupTabs() {		
 		ActionBar actionBar = getActionBar();
@@ -82,7 +90,15 @@ public class TimelineActivity extends FragmentActivity {
 		    .setTag("MentionsTimelineFragment")
 		    .setTabListener(new FragmentTabListener<MentionsTimelineFragment>(R.id.flContainer, this,
                         "mentions", MentionsTimelineFragment.class));
-		actionBar.addTab(tab2);		
+		actionBar.addTab(tab2);	
+	}
+	
+	public void FragmentTabListener(FragmentActivity activity, String tag, Class<HomeTimelineFragment> clz) {
+		Log.d("debug", clz.toString());
+	}
+	
+	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+		Log.d("debug", tab.toString());
 	}
 	
 	public void showProgressBar() {
